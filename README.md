@@ -10,16 +10,6 @@ authors:
 katex: true
 ---
 
-# Contents
---------
-
-[Introduction](#section-1)
-[Model Architecture](#section-2)
-[Training Methodology](#section-3)
-[Performance](#section-4)
-[Implications and Limitations](#section-5)
-[Conclusion](#section-6)
-
 ![](main_figure.PNG)
 
 **AlphaFold 3 represents a transformative leap in the field of biomolecular structure prediction**, introducing a single, unified framework that can accurately model a wide spectrum of biologically relevant molecules. Unlike its predecessors, which were typically constrained to proteins or required specialized adaptations for different molecular types, AlphaFold 3 seamlessly predicts the structures of *proteins, nucleic acids (DNA/RNA), small-molecule ligands, metal ions, and covalent modifications* within a single architecture.
@@ -30,7 +20,6 @@ This post delves into the architecture and capabilities of AlphaFold 3, highligh
 
 
 
-[1](#section-1)
 
 Introduction: Beyond Proteins, Toward All Biomolecules
 ------------------------------------------------------
@@ -61,7 +50,6 @@ At the heart of AlphaFold 3 lies a **diffusion-based generative model**, allowin
 
 In the following sections, we will dive into how AlphaFold 3 works, what differentiates it architecturally, and how it performs across a wide spectrum of biomolecular benchmarks.
 
-[2](#section-2)
 
 AlphaFold 3 Architecture: A Unified Redesign
 --------------------------------------------
@@ -79,7 +67,6 @@ AlphaFold 3 (AF3) marks a radical departure from the architecture of AlphaFold 2
 
 Let's examine the key innovations in each component.
 
-[2.1](#section-2.1)
 
 ### Input Module: Multimodal Foundations
 
@@ -91,7 +78,6 @@ The input module ingests diverse biological entities using three sub-blocks:
 
 This modularity allows for a seamless transformation into a shared representation space across modalities, ensuring downstream modules can process inter-molecular interactions effectively.
 
-[2.2](#section-2.2)
 
 ### 2. Trunk Module: From Evoformer to Pairformer
 
@@ -106,7 +92,6 @@ This trunk encodes complex residue-pair relationships before forwarding the late
 
 This design focuses on updating information based on residue-pair interactions, with the resulting representation feeding directly into the structure prediction module.
 
-[2.3](#section-2.3)
 
 ### 3. Structure Prediction: Diffusion-Based Generative Modeling
 
@@ -120,7 +105,6 @@ This allows the model to learn both local and global atomic configurations, enab
 * The noise magnitude σt allows the model to simultaneously learn local and global structural information
 * This approach enables direct prediction of diverse biomolecular structures while maintaining side-chain precision
 
-[2.4](#section-2.4)
 
 ### 4. Confidence Head: Interpretable Structure Reliability
 
@@ -132,7 +116,6 @@ AF3 incorporates robust confidence metrics alongside structure prediction:
 
 These outputs provide fine-grained interpretability, supporting the use of AF3 structures in downstream experimental and design pipelines.
 
-[3](#section-3)
 
 Training Methodology
 --------------------
@@ -169,14 +152,12 @@ Because only a single diffusion step is trained at a time, AlphaFold 3 uses a "m
 
 Not all interaction types are equally abundant. AlphaFold 3 adjusts training by increasing the sampling probability of undertrained tasks and reduces it for overfitted ones. Final model selection is based on a weighted combination of structural and interface metrics.
 
-[4](#section-4)
 
 Performance: A Universal Model Outperforming Specialized Approaches
 -------------------------------------------------------------------
 
 AlphaFold 3 delivers state-of-the-art performance across a wide variety of biomolecular structure prediction tasks, setting new benchmarks in protein-ligand docking, protein-nucleic acid complexes, antibody-antigen interfaces, and covalent modifications.
 
-[4.1](#section-4.1)
 
 ### Protein–Ligand Complexes
 
@@ -186,7 +167,6 @@ Using the PoseBusters benchmark, AF3 significantly outperforms classical docking
 * **AF3 performance**: Significantly outperforms Vina and other specialized docking tools
 * **Statistical significance**: Fisher's test, p=2.27×10−13
 
-[4.2](#section-4.2)
 
 ### Protein-Protein & Antibody-Antigen Interfaces
 
@@ -195,19 +175,16 @@ Compared to AlphaFold-Multimer v2.3, AF3 shows significant improvements in DockQ
 * **Success criterion**: DockQ > 0.23
 * **Improvement**: Substantial enhancement over AlphaFold-Multimer 2.3 (Wilcoxon test, p=1.8×10−18)
 
-[4.3](#section-4.3)
 
 ### RNA and DNA Complex Prediction
 
 AF3 surpasses RoseTTAFold2NA and AIchemy\_RNA in CASP15 RNA targets and handles pure nucleic acid structures and large hybrid complexes with consistent accuracy, even in low-homology settings.
 
-[4.4](#section-4.4)
 
 ### Covalent Modifications
 
 AF3 accurately predicts structures with covalent modifications (e.g., bonded ligands and glycans). For example, it achieves a 46.1% success rate (RMSD < 2Å) for high-quality single-residue glycan predictions.
 
-[4.5](#section-4.5)
 
 ### Reliable Confidence Estimates
 
@@ -222,12 +199,10 @@ AF3 outputs pLDDT, PAE, and PDE metrics that are well-calibrated and predictive 
 
 Table 1: Comparison of AlphaFold 3 performance against specialized tools across different biomolecular prediction tasks.
 
-[5](#section-5)
 
 Model Implications and Limitations
 ----------------------------------
 
-[5.1](#section-5.1)
 
 ### Strengths
 
@@ -235,7 +210,6 @@ Model Implications and Limitations
 * **Diffusion-based generation for flexible structure modeling:** Its generative formulation allows sampling of diverse conformations, capturing both rigid and flexible binding events, critical for real-world interactions.
 * **Torsion-free stereochemistry precision:** By directly predicting atomic coordinates, AF3 achieves accurate stereochemical detail without relying on torsion angle parametrization, enhancing generalizability across molecular types.
 
-[5.2](#section-5.2)
 
 ### Limitations
 
@@ -244,7 +218,6 @@ Model Implications and Limitations
 * **No conformational dynamics:** AF3 predicts static ground-state structures and does not capture dynamic transitions essential in many biological functions.
 * **Sampling dependency:** For ambiguous or large complexes, multiple random seeds are often required to obtain high-quality results, increasing inference cost.
 
-[6](#section-6)
 
 Conclusion
 ----------
