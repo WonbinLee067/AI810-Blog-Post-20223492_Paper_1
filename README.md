@@ -1,4 +1,4 @@
-AI810-Blog-Post-20223492 : [Nature] Accurate structure prediction of biomolecular interactions with AlphaFold 3
+### AI810-Blog-Post-20223492 : [Nature] Accurate structure prediction of biomolecular interactions with AlphaFold 3
 
 ![](main_figure.PNG)
 
