@@ -1,8 +1,3 @@
----
-title: "AI810 Blog Post 20223492 : Accurate structure prediction of biomolecular interactions with AlphaFold 3"
-layout: default
----
-
 ![](main_figure.PNG)
 
 **AlphaFold 3 represents a transformative leap in the field of biomolecular structure prediction**, introducing a single, unified framework that can accurately model a wide spectrum of biologically relevant molecules. Unlike its predecessors, which were typically constrained to proteins or required specialized adaptations for different molecular types, AlphaFold 3 seamlessly predicts the structures of *proteins, nucleic acids (DNA/RNA), small-molecule ligands, metal ions, and covalent modifications* within a single architecture.
